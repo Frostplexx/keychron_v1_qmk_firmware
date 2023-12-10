@@ -43,6 +43,6 @@ jobs:
                   tag_name: ${{ steps.date.outputs.date }}
                   files: |
                       ./qmk_firmware/*.bin
-                      *.hex
-                      *.uf2
-                      .build/failed.*
+                      ./qmk_firmware/*.hex
+                      ./qmk_firmware/*.uf2
+                      ./qmk_firmware/.build/failed.*
