@@ -12,12 +12,19 @@ jobs:
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v2
+              with:
+                  submodules: recursive
+                  ref: ${{ github.event.inputs.branch || github.ref }}
 
-            - name: Set up QMK Environment
+            - name: Install QMK
               run: |
                   sudo apt-get update -y
                   sudo apt-get install python3
-                  sudo python3 -m pip install --user qmk
+                  sudo -H pip install qmk
+
+            - name: Install Dependencies
+              run: |
+                  pip3 pip3 install -r requirements.txt
 
             - name: Build Firmware
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
