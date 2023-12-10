@@ -11,8 +11,11 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes        # Enable Encoder
+KEY_LOCK_ENABLE = yes       # Enable Locking Support
+CAPS_WORD_ENABLE = yes      # Enable Caps Word
 DIP_SWITCH_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
+DEFERRED_EXEC_ENABLE = yes
 
 # custom matrix setup
 CUSTOM_MATRIX = lite

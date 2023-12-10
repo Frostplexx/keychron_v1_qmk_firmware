@@ -16,6 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "keychron_common.h"
+#include "features/mouse_turbo_click.h"
 
 // clang-format off
 
@@ -25,6 +26,7 @@ enum layers{
   MAC_L2,
   MAC_L3
 };
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_iso_83(
@@ -69,8 +71,74 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {[MAC_BASE]
 // clang-format on
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_record_keychron(keycode, record)) {
-        return false;
+    if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
+    if (!process_record_keychron(keycode, record)) { return false; }
+
+    static struct {
+        bool on;
+        bool first;
+    } w_i_d_e_t_e_x_t = {false, false};
+
+    if (w_i_d_e_t_e_x_t.on) {
+        if (record->event.pressed) {
+            switch (keycode) {
+                case KC_A...KC_0:
+                case KC_MINUS...KC_SLASH:
+                case KC_SPC:
+                    if (w_i_d_e_t_e_x_t.first) {
+                        w_i_d_e_t_e_x_t.first = false;
+                    } else {
+                        send_char(' ');
+                    }
+                    break;
+                case KC_ENT:
+                    w_i_d_e_t_e_x_t.first = true;
+                    break;
+                case KC_BSPC:
+                    send_char('\b'); // backspace
+                    break;
+            }
+        }
     }
-    return true;
+
+    static bool tAuNtTeXt = false;
+
+    if (tAuNtTeXt) {
+        if (record->event.pressed) {
+            if (keycode != KC_SPC) {
+                register_code(KC_CAPS);
+//                unregister_code(KC_CAPS);
+            }
+        }
+    }
+
+    switch (keycode) {
+        /* z e s t y   m e m e s */
+        case WIDETXT:
+            if (record->event.pressed) {
+                w_i_d_e_t_e_x_t.on = !w_i_d_e_t_e_x_t.on;
+                w_i_d_e_t_e_x_t.first = true;
+            }
+            return false;
+        case TAUNTXT:
+            if (record->event.pressed) {
+                tAuNtTeXt = !tAuNtTeXt;
+                // when it's turned on, toggle caps lock (makes first letter lowercase)
+                if (tAuNtTeXt) {
+                    register_code(KC_CAPS);
+//                    unregister_code(KC_CAPS);
+                }
+            }
+            return false;
+
+        case UC_SHRG: // ¯\_(ツ)_/¯
+            if (record->event.pressed) {
+                SEND_STRING(":man_shrugging:");
+
+            }
+            return false;
+
+        default:
+            return true; //Process all other keycodes normally
+    }
 }

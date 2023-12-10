@@ -1,36 +1,33 @@
-# Quantum Mechanical Keyboard Firmware
+# Firmware for the Keychron V1 ISO keyboard
 
-[![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
-[![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/Uq7gcHh)
-[![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
-[![GitHub contributors](https://img.shields.io/github/contributors/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/pulse/monthly)
-[![GitHub forks](https://img.shields.io/github/forks/qmk/qmk_firmware.svg?style=social&label=Fork)](https://github.com/qmk/qmk_firmware/)
+This is a fork of the QMK firmware for the Keychron V1 ISO keyboard. The original firmware is available at
+https://github.com/qmk/qmk_firmware/tree/master/keyboards/keychron/v1. This is my personal keymap specifically for the ISO Encoder version.
 
-This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the Clueboard product line.
+## Changes from original firmware
 
-## Documentation
+-   Change caps lock indicator color to red
+-   When switching to any layer > 0, highlight the keys that are bound to an action
+-   Remove Windows layer because I don't use Windows
+-   Press Left Shift + Right Shift to switch to enable Caps Word mode
+-   Added mouse Autoclicker https://getreuer.info/posts/keyboards/mouse-turbo-click/index.html
+-   Added w i d e t e x t m o d e
+-   Added TaUnt TeXt MoDe
+-   Added Key Lock mode -- Not configured yet in VIA
 
-* [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
+## Keymap
 
-The docs are powered by [Docsify](https://docsify.js.org/) and hosted on [GitHub](/docs/). They are also viewable offline; see [Previewing the Documentation](https://docs.qmk.fm/#/contributing?id=previewing-the-documentation) for more details.
+Included is also my VIA keymap. It has a bunch of stuff on layer 1 like media keys, volume control.
 
-You can request changes by making a fork and opening a [pull request](https://github.com/qmk/qmk_firmware/pulls), or by clicking the "Edit this page" link at the bottom of any page.
+-   Open https://usevia.app/ in your browser
+-   Go to settings an enable "Design Tab"
+-   In the design tab load the keymap definition from via/custom_keymap.json
+-   If you want you can load the layout from via/keychron_v1_iso_knob_layout.json
 
-## Supported Keyboards
+## Building
 
-* [Planck](/keyboards/planck/)
-* [Preonic](/keyboards/preonic/)
-* [ErgoDox EZ](/keyboards/ergodox_ez/)
-* [Clueboard](/keyboards/clueboard/)
-* [Cluepad](/keyboards/clueboard/17/)
-* [Atreus](/keyboards/atreus/)
+-   Clone this repo using `qmk clone Frostplexx/keychron_v1_qmk_firmware.git`
+-   Go into keyboards/keychron/v1/iso_encoder/keymaps/frostplexx and edit it to your liking
+-   Run `qmk compile -kb keychron/v1/iso_encoder -km frostplexx` to compile the firmware
+-   Install the firmware using QMK Toolbox: https://github.com/qmk/qmk_toolbox/releases
 
-The project also includes community support for [lots of other keyboards](/keyboards/).
-
-## Maintainers
-
-QMK is developed and maintained by Jack Humbert of OLKB with contributions from the community, and of course, [Hasu](https://github.com/tmk). The OLKB product firmwares are maintained by [Jack Humbert](https://github.com/jackhumbert), the Ergodox EZ by [ZSA Technology Labs](https://github.com/zsa), the Clueboard by [Zach White](https://github.com/skullydazed), and the Atreus by [Phil Hagelberg](https://github.com/technomancy).
-
-## Official Website
-
-[qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+For instructions see https://docs.qmk.fm
