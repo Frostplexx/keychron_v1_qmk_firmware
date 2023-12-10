@@ -11,7 +11,7 @@ jobs:
 
         steps:
             - name: Checkout Repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
               with:
                   submodules: recursive
                   ref: ${{ github.event.inputs.branch || github.ref }}
@@ -36,11 +36,14 @@ jobs:
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
               working-directory: qmk_firmware # Set the working directory to qmk_firmware
 
-            - name: Release Firmware
-              uses: "marvinpinto/action-automatic-releases@latest"
+            - name: "Upload artifacts"
+              uses: actions/upload-artifact@v3
+              if: always()
               with:
-                  repo_token: "${{ secrets.GITHUB_TOKEN }}"
-                  automatic_release_tag: "latest"
-                  prerelease: false
-                  files: |
-                      qmk_firmware/build/keychron_v1_iso_encoder_frostplexx.bin
+                  name: artifacts-${{ github.event.inputs.branch || github.ref_name }}
+                  if-no-files-found: ignore
+                  path: |
+                      *.bin
+                      *.hex
+                      *.uf2
+                      .build/failed.*
