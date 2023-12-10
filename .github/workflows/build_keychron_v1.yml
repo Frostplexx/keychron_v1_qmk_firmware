@@ -40,6 +40,7 @@ jobs:
               uses: actions/upload-artifact@v3
               if: always()
               with:
+                  working-directory: qmk_firmware # Set the working directory to qmk_firmware
                   name: artifacts-${{ github.event.inputs.branch || github.ref_name }}
                   if-no-files-found: ignore
                   path: |
