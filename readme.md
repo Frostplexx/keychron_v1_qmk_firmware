@@ -1,4 +1,4 @@
-# Keychron V1 ISO Keyboard Firmware
+# Keychron V1 ISO Encoder Keyboard Firmware
 
 Welcome to the custom firmware for the Keychron V1 ISO keyboard, based on the QMK firmware. This fork is tailored for the ISO Encoder version and comes with several enhancements to provide a personalized and improved user experience.
 
