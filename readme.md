@@ -1,33 +1,38 @@
-# Firmware for the Keychron V1 ISO keyboard
+# Keychron V1 ISO Keyboard Firmware
 
-This is a fork of the QMK firmware for the Keychron V1 ISO keyboard. The original firmware is available at
-https://github.com/qmk/qmk_firmware/tree/master/keyboards/keychron/v1. This is my personal keymap specifically for the ISO Encoder version.
+Welcome to the custom firmware for the Keychron V1 ISO keyboard, based on the QMK firmware. This fork is tailored for the ISO Encoder version and comes with several enhancements to provide a personalized and improved user experience.
 
-## Changes from original firmware
+## Original Firmware Source
 
--   Change caps lock indicator color to red
--   When switching to any layer > 0, highlight the keys that are bound to an action
--   Remove Windows layer because I don't use Windows
--   Press Left Shift + Right Shift to switch to enable Caps Word mode
--   Added mouse Autoclicker https://getreuer.info/posts/keyboards/mouse-turbo-click/index.html
--   Added w i d e t e x t m o d e
--   Added TaUnt TeXt MoDe
--   Added Key Lock mode -- Not configured yet in VIA
+The original QMK firmware for the Keychron V1 ISO keyboard can be found [here](https://github.com/qmk/qmk_firmware/keyboards/keychron/v1).
 
-## Keymap
+## Changes from Original Firmware
 
-Included is also my VIA keymap. It has a bunch of stuff on layer 1 like media keys, volume control.
+-   **Caps Lock Indicator Color:** Changed caps lock indicator color to red for better visibility.
+-   **Layer Activation Highlight:** When switching to any layer greater than 0, the keys bound to an action will be highlighted.
+-   **Windows Layer Removal:** The Windows layer has been removed for users who don't use Windows.
+-   **Caps Word Mode:** Press Left Shift + Right Shift to enable Caps Word mode for enhanced functionality.
+-   **Mouse Autoclicker:** Added mouse autoclicker, check here for details.
+-   **Wide Text Mode:** Added a wide text mode for versatile text manipulation.
+-   **TaUnt TeXt MoDe:** Added a fun and playful text mode for a unique typing experience.
+-   **Key Lock Mode:** Key Lock mode is added, though not configured in VIA yet.
 
--   Open https://usevia.app/ in your browser
--   Go to settings an enable "Design Tab"
--   In the design tab load the keymap definition from via/custom_keymap.json
--   If you want you can load the layout from via/keychron_v1_iso_knob_layout.json
+## VIA Keymap
 
-## Building
+The VIA keymap includes various features on layer 1, such as media keys and volume control.
 
--   Clone this repo using `qmk clone Frostplexx/keychron_v1_qmk_firmware.git`
--   Go into keyboards/keychron/v1/iso_encoder/keymaps/frostplexx and edit it to your liking
--   Run `qmk compile -kb keychron/v1/iso_encoder -km frostplexx` to compile the firmware
--   Install the firmware using QMK Toolbox: https://github.com/qmk/qmk_toolbox/releases
+### VIA Configuration Steps
 
-For instructions see https://docs.qmk.fm
+-   Open [VIA](https://usevia.app) in your browser.
+-   Enable "Design Tab" in the settings.
+-   Load the keymap definition from via/custom_keymap.json in the design tab.
+-   Optionally, load the layout from via/keychron_v1_iso_knob_layout.json.
+-   Building Instructions
+-   Clone this repository using qmk clone Frostplexx/keychron_v1_qmk_firmware.git.
+-   Navigate to keyboards/keychron/v1/iso_encoder/keymaps/frostplexx and customize it to your preferences.
+-   Run qmk compile -kb keychron/v1/iso_encoder -km frostplexx to compile the firmware.
+-   Install the firmware using [QMK Toolbox](htts://github.com/qmk/qmk_toolbox/releases).
+
+For more detailed instructions, refer to the [QMK Documentation](https://docs.qmk.fm).
+
+Feel free to explore and enjoy your enhanced Keychron V1 ISO keyboard experience!
