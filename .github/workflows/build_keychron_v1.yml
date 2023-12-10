@@ -22,15 +22,10 @@ jobs:
                   sudo apt-get update -y
                   sudo apt-get install python3
                   sudo -H pip install qmk
-                  sudo apt-get install dfu-programmer
+                  sudo apt-get install dfu-util
 
             - name: Install Arm GNU Toolchain (arm-none-eabi-gcc)
               uses: carlosperate/arm-none-eabi-gcc-action@v1
-
-            - name: Install Dependencies
-              run: |
-                  cd qmk_firmware
-                  pip install -r requirements.txt
 
             - name: Build Firmware
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
