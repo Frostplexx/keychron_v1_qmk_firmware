@@ -36,15 +36,9 @@ jobs:
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
               working-directory: qmk_firmware # Set the working directory to qmk_firmware
 
-            - name: "Upload artifacts"
-              uses: actions/upload-artifact@v3
-              if: always()
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              if: startsWith(github.ref, 'refs/tags/')
               with:
-                  working-directory: qmk_firmware # Set the working directory to qmk_firmware
-                  name: artifacts-${{ github.event.inputs.branch || github.ref_name }}
-                  if-no-files-found: ignore
-                  path: |
+                  files: |
                       *.bin
-                      *.hex
-                      *.uf2
-                      .build/failed.*
