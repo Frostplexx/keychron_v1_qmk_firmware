@@ -33,13 +33,14 @@ jobs:
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
               working-directory: qmk_firmware # Set the working directory to qmk_firmware
 
-            - name: Create Tag Name
-              uses: MiguelRipoll23/create-tag-name@main
+            - name: Create Tag
+              id: create_tag
+              uses: jaywcjlove/create-tag-action@main
 
             - name: Release
               uses: softprops/action-gh-release@v1
               with:
-                  tag_name: ${{ steps.create-tag-name.outputs.tag-name }}
+                  tag_name: ${{ steps.create_tag.outputs.version }}
                   files: |
                       *.bin
                       *.hex
