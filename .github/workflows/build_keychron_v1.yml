@@ -3,7 +3,7 @@ name: Build and Release Firmware
 on:
     push:
         branches:
-            - main # Adjust this branch name as needed
+            - master # Adjust this branch name as needed
 
 jobs:
     build:
