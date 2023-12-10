@@ -28,9 +28,9 @@ The VIA keymap includes various features on layer 1, such as media keys and volu
 -   Load the keymap definition from via/custom_keymap.json in the design tab.
 -   Optionally, load the layout from via/keychron_v1_iso_knob_layout.json.
 -   Building Instructions
--   Clone this repository using qmk clone Frostplexx/keychron_v1_qmk_firmware.git.
--   Navigate to keyboards/keychron/v1/iso_encoder/keymaps/frostplexx and customize it to your preferences.
--   Run qmk compile -kb keychron/v1/iso_encoder -km frostplexx to compile the firmware.
+-   Clone this repository using `qmk clone Frostplexx/keychron_v1_qmk_firmware.git`.
+-   Navigate to `keyboards/keychron/v1/iso_encoder/keymaps/frostplexx` and customize it to your preferences.
+-   Run `qmk compile -kb keychron/v1/iso_encoder` -km frostplexx to compile the firmware.
 -   Install the firmware using [QMK Toolbox](htts://github.com/qmk/qmk_toolbox/releases).
 
 For more detailed instructions, refer to the [QMK Documentation](https://docs.qmk.fm).
