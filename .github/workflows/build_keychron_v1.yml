@@ -33,13 +33,11 @@ jobs:
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
               working-directory: qmk_firmware # Set the working directory to qmk_firmware
 
-            - name: Create tag name
+            - name: Create Tag Name
               uses: MiguelRipoll23/create-tag-name@main
               id: create-tag-name
               with:
-                  major-labels: breaking-change
-                  minor-labels: feature,enhancement
-                  patch-labels: bugfix
+                  channel: stable
 
             - name: Release
               uses: softprops/action-gh-release@v1
