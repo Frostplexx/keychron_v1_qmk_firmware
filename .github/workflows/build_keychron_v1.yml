@@ -35,9 +35,6 @@ jobs:
 
             - name: Create Tag Name
               uses: MiguelRipoll23/create-tag-name@main
-              id: create-tag-name
-              with:
-                  channel: stable
 
             - name: Release
               uses: softprops/action-gh-release@v1
