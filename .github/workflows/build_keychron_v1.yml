@@ -42,7 +42,7 @@ jobs:
               with:
                   tag_name: ${{ steps.date.outputs.date }}
                   files: |
-                      *.bin
+                      ./qmk_firmware/*.bin
                       *.hex
                       *.uf2
                       .build/failed.*
