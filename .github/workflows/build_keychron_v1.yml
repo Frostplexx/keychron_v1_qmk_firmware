@@ -43,4 +43,4 @@ jobs:
                   automatic_release_tag: "latest"
                   prerelease: false
                   files: |
-                      .build/keychron_v1_iso_encoder_frostplexx.bin
+                      qmk_firmware/build/keychron_v1_iso_encoder_frostplexx.bin
