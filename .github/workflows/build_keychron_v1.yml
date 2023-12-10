@@ -15,6 +15,7 @@ jobs:
               with:
                   submodules: recursive
                   ref: ${{ github.event.inputs.branch || github.ref }}
+                  path: qmk_firmware # Clone the repository under the name qmk_firmware
 
             - name: Install QMK
               run: |
@@ -22,12 +23,17 @@ jobs:
                   sudo apt-get install python3
                   sudo -H pip install qmk
 
+            - name: Install Arm GNU Toolchain (arm-none-eabi-gcc)
+              uses: carlosperate/arm-none-eabi-gcc-action@v1
+
             - name: Install Dependencies
               run: |
+                  cd qmk_firmware
                   pip install -r requirements.txt
 
             - name: Build Firmware
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
+              working-directory: qmk_firmware # Set the working directory to qmk_firmware
 
     release:
         needs: build
@@ -52,6 +58,6 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./keychron_v1_iso_encoder_frostplexx.bin # Adjust this path as needed
+                  asset_path: ./qmk_firmware/keychron_v1_iso_encoder_frostplexx.bin # Adjust this path as needed
                   asset_name: keychron_v1_iso_encoder_frostplexx_${{ steps.commit_sha.outputs.SHA }}.bin # Adjust the desired artifact name
                   asset_content_type: application/octet-stream
