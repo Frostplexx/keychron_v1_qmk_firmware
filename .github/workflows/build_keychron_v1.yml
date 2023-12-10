@@ -8,7 +8,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-
+        permissions:
+            contents: write
+            pull-requests: write
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
@@ -31,8 +33,20 @@ jobs:
               run: qmk compile -kb keychron/v1/iso_encoder -km frostplexx
               working-directory: qmk_firmware # Set the working directory to qmk_firmware
 
+            - name: Create tag name
+              uses: MiguelRipoll23/create-tag-name@main
+              id: create-tag-name
+              with:
+                  major-labels: breaking-change
+                  minor-labels: feature,enhancement
+                  patch-labels: bugfix
+
             - name: Release
               uses: softprops/action-gh-release@v1
               with:
+                  tag_name: ${{ steps.create-tag-name.outputs.tag-name }}
                   files: |
                       *.bin
+                      *.hex
+                      *.uf2
+                      .build/failed.*
